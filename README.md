@@ -1,1 +1,1 @@
-https://jingyangzhenren.github.io/jingyangzhenren/
+https://jingyangzhenren.github.io
