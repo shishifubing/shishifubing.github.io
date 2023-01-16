@@ -1,9 +1,11 @@
-# https://jingyangzhenren.com
-
-# Repository
-
-https://github.com/jingyangzhenren-com/jingyangzhenren-com.github.io
+# [shishifubing-com.github.io][repo]
 
 # TODO
 
 * actually put some content here
+
+
+<!-- internal links -->
+
+<!-- external links -->
+[repo]: https://github.com/shishifubing-com/shishifubing-com.github.io
