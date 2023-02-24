@@ -45,6 +45,8 @@ jobs:
 
           mkdir -p projects
           cd projects
+          gh --help
+          gh repo list shishifubing
           read -ra repos < <(
             gh repo list shishifubing                         \
               --source                                        \
