@@ -51,6 +51,13 @@ jobs:
           gh repo list shishifubing --source --visibility public
           gh repo list shishifubing --source --visibility public --limit 999
           gh repo list shishifubing --source --visibility public --limit 999 --json name
+          gh repo list shishifubing --source --visibility public --limit 999 --json name --template '{{ range . }}{{ .name }} {{ end }}'
+          gh repo list shishifubing                         \
+              --source                                        \
+              --visibility public                             \
+              --limit 999                                     \
+              --json name                                     \
+              --template '{{ range . }}{{ .name }} {{ end }}'
           read -ra repos < <(
             gh repo list shishifubing                         \
               --source                                        \
