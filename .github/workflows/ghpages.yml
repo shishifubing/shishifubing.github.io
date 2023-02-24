@@ -39,6 +39,7 @@ jobs:
 
       - name: Clone repositories
         working-directory: docs
+        shell: bash
         run: |
           set -Eeuxo pipefail
 
