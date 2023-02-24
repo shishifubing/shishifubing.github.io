@@ -9,6 +9,9 @@ on:
 permissions:
   contents: write
 
+env:
+  GH_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+
 jobs:
   mkdocs:
     name: Deploy
@@ -60,9 +63,9 @@ jobs:
 
           for repo in "${repos[@]}"; do
             mkdir -p "${repo}/docs"
-            test -f "${repos}/docs/index.md" \
-              || cp "${repos}/README.md" "${repos}/docs/index.md"
-            touch "${repos}/mkdocs.yml"
+            test -f "${repo}/docs/index.md"                     \
+              || cp "${repo}/README.md" "${repo}/docs/index.md"
+            touch "${repo}/mkdocs.yml"
           done
 
       - name: Deploy to GHPages
