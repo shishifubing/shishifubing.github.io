@@ -4,6 +4,8 @@ site_author: tiandaoburen
 site_description: >-
   Documentation for all shishifubing repositories
 
+docs_dir: .
+
 nav:
   - Intro: README.md
 
