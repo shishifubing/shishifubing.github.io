@@ -2,7 +2,7 @@
 
 # [`shishifubing.github.io`][url-repo]
 
-[![License][shield-license]][url-license]
+[![License][badge-license]][url-license]
 
 A portfolio website
 
@@ -10,7 +10,7 @@ A portfolio website
 
 ## TODO
 
-* actually put some content here
+- actually put some content here
 
 <!-- relative links -->
 
@@ -23,4 +23,4 @@ A portfolio website
 
 <!-- shield links -->
 
-[shield-license]: https://img.shields.io/github/license/shishifubing/shishifubing.github.io.svg?style=for-the-badge
+[badge-license]: https://img.shields.io/github/license/shishifubing/shishifubing.github.io.svg?style=for-the-badge

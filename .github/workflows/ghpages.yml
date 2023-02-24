@@ -69,11 +69,10 @@ jobs:
 
           for repo in "${repos[@]}"; do
             mkdir -p "${repo}/docs"
+            touch "${repo}/docs/dummy.md"
             echo  "
               site_name: ${repo}
               repo_url: https://github.com/shishifubing/${repo}
-              nav:
-                - Home: index.md
             " >"${repo}/mkdocs.yml"
           done
 
