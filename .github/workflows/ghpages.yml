@@ -45,20 +45,7 @@ jobs:
 
           mkdir -p projects
           cd projects
-          gh --version
-          gh repo list --help
-          gh repo list shishifubing --source
-          gh repo list shishifubing --source --visibility public
-          gh repo list shishifubing --source --visibility public --limit 999
-          gh repo list shishifubing --source --visibility public --limit 999 --json name
-          gh repo list shishifubing --source --visibility public --limit 999 --json name --template '{{ range . }}{{ .name }} {{ end }}'
-          gh repo list shishifubing                         \
-              --source                                        \
-              --visibility public                             \
-              --limit 999                                     \
-              --json name                                     \
-              --template '{{ range . }}{{ .name }} {{ end }}'
-          read -ra repos < <(
+          repos=$(
             gh repo list shishifubing                         \
               --source                                        \
               --visibility public                             \
@@ -66,6 +53,7 @@ jobs:
               --json name                                     \
               --template '{{ range . }}{{ .name }} {{ end }}'
           )
+          read -ra repos <<<"${repos}"
 
           for repo in "${repos[@]}"; do
             {
