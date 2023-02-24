@@ -66,9 +66,6 @@ jobs:
           ls
 
           for repo in "${repos[@]}"; do
-            mkdir -p "${repo}/docs"
-            test -f "${repo}/docs/index.md"                     \
-              || cp "${repo}/README.md" "${repo}/docs/index.md"
             touch "${repo}/mkdocs.yml"
           done
 
