@@ -27,10 +27,43 @@ jobs:
         uses: actions/cache@v3
         with:
           key: ${{ github.ref }}
-          path: .cache
+          path: |
+            .cache
+            docs/projects
 
       - name: Install packages
         run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
+
+      - name: Clone repositories
+        working-directory: docs
+        run: |
+          mkdir -p projects
+          cd projects
+          read -ra repos < <(
+            gh repo list shishifubing                         \
+              --source                                        \
+              --visibility public                             \
+              --limit 999                                     \
+              --json name                                     \
+              --template '{{ range . }}{{ .name }} {{ end }}'
+          )
+
+          for repo in "${repos[@]}"; do
+            {
+              git clone "https://github.com/shishifubing/${repo}" \
+                || git --git-dir "${repo}/.git" pull
+            } &
+          done
+
+          wait
+          ls
+
+          for repo in "${repos[@]}"; do
+            mkdir -p "${repo}/docs"
+            test -f "${repos}/docs/index.md" \
+              || cp "${repos}/README.md" "${repos}/docs/index.md"
+            touch "${repos}/mkdocs.yml"
+          done
 
       - name: Deploy to GHPages
         run: mkdocs gh-deploy --force
