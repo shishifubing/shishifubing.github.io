@@ -5,7 +5,6 @@ site_description: >-
   Documentation for all shishifubing repositories
 
 nav:
-  - Intro: index.md
   - Projects: "*include ./projects/*/mkdocs.yml"
 
 plugins:
