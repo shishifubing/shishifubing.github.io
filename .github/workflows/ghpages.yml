@@ -45,8 +45,12 @@ jobs:
 
           mkdir -p projects
           cd projects
-          gh --help
-          gh repo list shishifubing
+          gh --version
+          gh repo list --help
+          gh repo list shishifubing --source
+          gh repo list shishifubing --source --visibility public
+          gh repo list shishifubing --source --visibility public --limit 999
+          gh repo list shishifubing --source --visibility public --limit 999 --json name
           read -ra repos < <(
             gh repo list shishifubing                         \
               --source                                        \
