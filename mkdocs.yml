@@ -4,6 +4,8 @@ site_author: tiandaoburen
 site_description: >-
   Documentation for all shishifubing repositories
 
+repo_url: https://github.com/shishifubing/shishifubing.github.io
+
 nav:
   - Projects: "*include ./projects/*/mkdocs.yml"
 
