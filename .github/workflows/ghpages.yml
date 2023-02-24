@@ -1,0 +1,76 @@
+name: GHPages
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  GH_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+
+jobs:
+  mkdocs:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          key: ${{ github.ref }}
+          path: |
+            .cache
+            docs/projects
+
+      - name: Install packages
+        run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
+
+      - name: Copy CNAME [https://github.com/mkdocs/mkdocs/issues/1257#issuecomment-316455319]
+        run: cp CNAME docs/
+
+      - name: Clone repositories
+        working-directory: docs
+        shell: bash
+        run: |
+          set -Eeuxo pipefail
+
+          mkdir -p projects
+          cd projects
+          repos=$(
+            gh repo list shishifubing                         \
+              --source                                        \
+              --visibility public                             \
+              --limit 999                                     \
+              --json name                                     \
+              --template '{{ range . }}{{ .name }} {{ end }}'
+          )
+          read -ra repos <<<"${repos}"
+
+          for repo in "${repos[@]}"; do
+            {
+              git clone "https://github.com/shishifubing/${repo}" \
+                || git --git-dir "${repo}/.git" pull
+            } &
+          done
+
+          wait
+          ls
+
+          for repo in "${repos[@]}"; do
+            touch "${repo}/mkdocs.yml"
+          done
+
+      - name: Deploy to GHPages
+        run: mkdocs gh-deploy --force
