@@ -68,6 +68,7 @@ jobs:
           ls
 
           for repo in "${repos[@]}"; do
+            mkdir -p "${repo}/docs"
             echo "site_name: ${repo}" >"${repo}/mkdocs.yml"
           done
 
