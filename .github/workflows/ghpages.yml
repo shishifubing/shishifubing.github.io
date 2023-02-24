@@ -70,7 +70,7 @@ jobs:
           for repo in "${repos[@]}"; do
             echo  "
               site_name: ${repo}
-              docs_dir: docs
+              docs_dir: ./docs
             " >"${repo}/mkdocs.yml"
           done
 
