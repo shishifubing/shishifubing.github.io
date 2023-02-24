@@ -38,7 +38,7 @@ jobs:
         run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
 
       - name: Copy CNAME [https://github.com/mkdocs/mkdocs/issues/1257#issuecomment-316455319]
-        run: cp CNAME docs/
+        run: mkdir -p docs && cp CNAME docs/
 
       - name: Clone repositories
         working-directory: docs
