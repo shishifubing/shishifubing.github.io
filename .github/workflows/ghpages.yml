@@ -15,13 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - uses: actions/cache@v3
+
+      - name: Cache
+        uses: actions/cache@v3
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+
+      - name: Install packages
+        run: pip install mkdocs-material mkdocs-monorepo-plugin
+
+      - name: Deploy to GHPages
+        run: mkdocs gh-deploy --force
