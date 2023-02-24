@@ -40,6 +40,8 @@ jobs:
       - name: Clone repositories
         working-directory: docs
         run: |
+          set -Eeuxo pipefail
+
           mkdir -p projects
           cd projects
           read -ra repos < <(
