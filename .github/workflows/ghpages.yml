@@ -70,7 +70,9 @@ jobs:
           for repo in "${repos[@]}"; do
             echo  "
               site_name: ${repo}
-              docs_dir: ./docs
+              repo_url: https://github.com/shishifubing/${repo}
+              nav:
+                - README.md
             " >"${repo}/mkdocs.yml"
           done
 
