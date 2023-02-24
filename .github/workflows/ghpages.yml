@@ -30,7 +30,7 @@ jobs:
           path: .cache
 
       - name: Install packages
-        run: pip install mkdocs-material mkdocs-monorepo-plugin
+        run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
 
       - name: Deploy to GHPages
         run: mkdocs gh-deploy --force
