@@ -68,11 +68,10 @@ jobs:
           ls
 
           for repo in "${repos[@]}"; do
+            mkdir -p "${repo}/docs"
             echo  "
               site_name: ${repo}
               repo_url: https://github.com/shishifubing/${repo}
-              nav:
-                - README.md
             " >"${repo}/mkdocs.yml"
           done
 
