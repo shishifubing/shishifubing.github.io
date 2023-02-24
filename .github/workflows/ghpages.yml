@@ -68,8 +68,7 @@ jobs:
           ls
 
           for repo in "${repos[@]}"; do
-            mkdir -p "${repo}/docs"
-            echo "site_name: ${repo}" >"${repo}/mkdocs.yml"
+            echo -e "site_name: ${repo}\ndocs_dir: docs" >"${repo}/mkdocs.yml"
           done
 
       - name: Deploy to GHPages
