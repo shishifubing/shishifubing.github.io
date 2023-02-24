@@ -68,7 +68,7 @@ jobs:
           ls
 
           for repo in "${repos[@]}"; do
-            touch "${repo}/mkdocs.yml"
+            echo "site_name: ${repo}" >"${repo}/mkdocs.yml"
           done
 
       - name: Deploy to GHPages
