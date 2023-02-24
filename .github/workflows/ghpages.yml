@@ -73,7 +73,7 @@ jobs:
               site_name: ${repo}
               repo_url: https://github.com/shishifubing/${repo}
               nav:
-                - README.md
+                - Home: index.md
             " >"${repo}/mkdocs.yml"
           done
 
