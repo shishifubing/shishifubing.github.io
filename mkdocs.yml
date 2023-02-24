@@ -6,6 +6,7 @@ site_description: >-
 
 nav:
   - Intro: index.md
+  - Projects: "*include ./projects/*/mkdocs.yml"
 
 plugins:
   - monorepo
