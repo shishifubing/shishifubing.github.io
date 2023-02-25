@@ -8,7 +8,7 @@ repo_url: https://github.com/shishifubing/shishifubing.github.io
 
 nav:
   - Home: index.md
-  - Projects: "*include ./projects/*"
+  - Projects: "*include ./projects/*/mkdocs.yml"
 
 plugins:
   - monorepo
