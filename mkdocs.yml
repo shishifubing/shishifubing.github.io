@@ -7,11 +7,10 @@ site_description: >-
 repo_url: https://github.com/shishifubing/shishifubing.github.io
 
 nav:
-  - Home: dummy.md
-  - Projects: "*include ./projects/*/mkdocs.yml"
+  - Home: index.md
+  - Projects: projects
 
 plugins:
-  - monorepo
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:

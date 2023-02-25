@@ -39,9 +39,10 @@ jobs:
 
       - name: Copy CNAME [https://github.com/mkdocs/mkdocs/issues/1257#issuecomment-316455319]
         run: mkdir -p docs && cp CNAME docs/
+        shell: bash
 
       - name: Clone repositories
-        shell: bash
+        working-directory: docs
         run: |
           set -Eeuxo pipefail
 
@@ -65,16 +66,6 @@ jobs:
           done
 
           wait
-          ls
-
-          for repo in "${repos[@]}"; do
-            mkdir -p "${repo}/docs"
-            touch "${repo}/docs/dummy.md"
-            echo  "
-              site_name: ${repo}
-              repo_url: https://github.com/shishifubing/${repo}
-            " >"${repo}/mkdocs.yml"
-          done
 
       - name: Deploy to GHPages
         run: mkdocs gh-deploy --force
