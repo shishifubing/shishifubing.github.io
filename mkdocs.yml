@@ -8,9 +8,10 @@ repo_url: https://github.com/shishifubing/shishifubing.github.io
 
 nav:
   - Home: index.md
-  - Projects: projects
+  - Projects: "*include ./projects/*"
 
 plugins:
+  - monorepo
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
