@@ -1,0 +1,38 @@
+{% if filter.qs %}
+    <table class="table m-2">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in filter.qs %}
+            <tr>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}">
+                        {{ product.name }}
+                    </a>
+                    <a href="{% url 'product_update' product.id %}">
+                        <br/>
+                        <u>Edit</u>
+                    </a>
+                    <a href="{% url 'product_delete' product.id %}">
+                        <br/>
+                        <u>Delete</u>
+                    </a>
+                </td>
+                <td>{{ product.description | truncatewords:4 }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h2>no products</h2>
+{% endif %}

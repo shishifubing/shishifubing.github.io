@@ -1,0 +1,23 @@
+<!-- Main Content -->
+<div id="content">
+
+    {% if books %}
+
+    <div>
+        {% include 'flatpages/books.html' %}
+    </div>
+
+    {% elif content %}
+
+    {{ content|safe }}
+
+    {% else %}
+
+    <div>
+        <p>No books or chapters</p>
+    </div>
+
+    {% endif %}
+
+</div>
+<!-- End of Main Content -->

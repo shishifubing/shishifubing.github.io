@@ -1,0 +1,29 @@
+- tags:
+    - dotfiles
+  vars:
+    _prefix: "dotfiles :"
+
+  block:
+    - name: "{{ _prefix }} Check current user"
+      ansible.builtin.assert:
+        that: ansible_user != "root"
+
+    - name: "{{ _prefix }} Clone dotfiles"
+      ansible.builtin.git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ dotfiles_dir }}"
+        force: true
+
+    - name: "{{ _prefix }} Link bashrc from dotfiles"
+      ansible.builtin.file:
+        src: "{{ dotfiles_dir }}/scripts/bashrc.sh"
+        dest: "{{ server_home }}/.bashrc"
+        state: link
+        force: true
+
+    - name: "{{ _prefix }} Link .terraformrc from dotfiles"
+      ansible.builtin.file:
+        src: "{{ dotfiles_dir }}/.terraformrc"
+        dest: "{{ server_home }}/.terraformrc"
+        state: link
+        force: true

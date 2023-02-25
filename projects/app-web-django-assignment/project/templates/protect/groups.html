@@ -1,0 +1,13 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Groups</h6>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            {% for group in request.user.groups.filter %}
+            <li class="list-group-item">{{ group }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

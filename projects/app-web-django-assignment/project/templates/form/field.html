@@ -1,0 +1,10 @@
+<div class="{% if field.errors %}alert alert-danger {% endif %}form-group pr-2">
+    <div class="controls">
+        <label class="control-label mr-2">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help-inline"><small>{{ field.help_text }}</small></p>
+        {% endif %}
+        {% include 'form/errors.html' with errors=field.errors %}
+    </div>
+</div>

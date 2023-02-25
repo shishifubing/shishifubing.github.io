@@ -1,0 +1,22 @@
+{% extends 'articles/articles.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+{% include 'articles/header.html' %}
+<form class="user d-flex" action="" name="articles_search_form" method="get">
+    {% include 'form/form.html' with form=filter.form %}
+    <div class="form-group d-flex align-items-center">
+        <div class="controls">
+            <button class="btn btn-primary btn-icon-split" type="submit">
+                <span class="icon text-white-50">
+                    <i class="fas fa-search fa-sm"></i>
+                </span>
+                <span class="text">search</span>
+            </button>
+        </div>
+    </div>
+</form>
+{% include 'articles/articles_table.html' %}
+
+{% endblock content %}

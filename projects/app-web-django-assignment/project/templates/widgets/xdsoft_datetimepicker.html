@@ -1,0 +1,9 @@
+{% include "django/forms/widgets/input.html" %}
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+       $("input[name='{{ widget.name }}']").datetimepicker({
+        format: 'd/m/Y H:i',
+        });
+    });
+</script>

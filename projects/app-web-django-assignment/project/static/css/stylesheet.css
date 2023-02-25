@@ -1,0 +1,8 @@
+.svg_background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.svg_trash {  background-image: url(../img/trash.svg); }
+.svg_pencil { background-image: url(../img/pencil.svg); }
+.svg_plus { background-image: url(../img/plus.svg);}

@@ -1,0 +1,16 @@
+{% extends 'account/default.html' %}
+
+{% block title %}
+Create
+{% endblock title %}
+
+{% block sign_content %}
+<form method="post" class="user p-5">
+    {% include 'form/form.html' %}
+    <button class="btn btn-success btn-icon-split my-2" type="submit">
+        <span class="icon text-white-50">
+            <i class="fas fa-check"></i>
+        </span>
+        <span class="text">Update</span>
+</form>
+{% endblock sign_content %}

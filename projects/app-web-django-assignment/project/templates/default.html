@@ -1,0 +1,13 @@
+{% extends 'layout/default.html' %}
+{% load account %}
+
+{% block sidebar %}
+{% include 'layout/sidebar.html' %}
+{% endblock sidebar %}
+
+{% block topbar %}
+{% user_display user as user_display %}
+{% if user_display %}
+{% include 'layout/topbar.html' %}
+{% endif %}
+{% endblock topbar %}

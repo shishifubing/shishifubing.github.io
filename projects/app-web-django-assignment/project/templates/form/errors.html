@@ -1,0 +1,7 @@
+{% if errors %}
+<ul class="list-group my-2">
+    {% for error in errors %}
+    <li class="list-group-item">{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

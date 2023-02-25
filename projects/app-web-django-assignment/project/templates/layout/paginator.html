@@ -1,0 +1,41 @@
+{% load custom_filters %}
+
+{% if is_paginated %}
+<!-- Paginator -->
+<footer class="sticky-footer p-3">
+    <div class="container">
+        <div class="text-center">
+            {% if page_obj.has_previous %}
+            <a href="?{% parameter_replace page=1 %}" class="pr-1 text-decoration-none pl-1">
+                ❮❮
+            </a>
+            <a href="?{% parameter_replace page=page_obj.previous_page_number %}" class="text-decoration-none pl-1">
+                ❮
+            </a>
+            {% endif %}
+
+            {% for number in page_obj.paginator.page_range %}
+            {% if page_obj.number == number %}
+            <a href="?{% parameter_replace page=number %}" class="border text-white bg-primary rounded text-decoration-none pl-1">
+                {{ number }}
+            </a>
+            {% elif number > page_obj.number|add:'-3' and number < page_obj.number|add:'3' %}
+            <a href="?{% parameter_replace page=number %}" class="text-decoration-none pl-1">
+                {{ number }}
+            </a>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <a href="?{% parameter_replace page=page_obj.next_page_number %}" class="text-decoration-none text-center pl-1">
+                ❯
+            </a>
+            <a href="?{% parameter_replace page=page_obj.paginator.num_pages %}" class="pl-1 text-decoration-none">
+                ❯❯
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</footer>
+<!-- End of Paginator -->
+{% endif %}

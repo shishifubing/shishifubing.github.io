@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    },
+    {
+      "path": "../../Repositories/Personal/app-android-anki-chinese-flashcards-enricher"
+    },
+    {
+      "path": "../../Repositories/Personal/template-personal-default"
+    },
+    {
+      "path": "../../Repositories/Personal/infra-cloud-shishifubing.com"
+    },
+    {
+      "path": "../../Repositories/Personal/ci-actions-common"
+    },
+    {
+      "path": "../../Repositories/Personal/infra-repos-shishifubing"
+    },
+    {
+      "path": "../../Repositories/Personal/plugin-sonatype-nexus-security-check"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "vector": "cpp"
+    },
+    "svg.preview.background": "custom"
+  }
+}

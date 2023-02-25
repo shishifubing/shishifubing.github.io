@@ -1,0 +1,33 @@
+version: "2"
+
+services:
+  nexus:
+    image: sonatype/nexus3:${NEXUS_VERSION}
+    container_name: nexus
+    volumes:
+      - "${DIRECTORY_DATA}:/nexus-data"
+      - "${DIRECTORY_DEPLOY}:/opt/sonatype/nexus/deploy"
+    ports: [ "8081:8081" ]
+    networks: [ nexus ]
+
+
+  #elasticsearch:
+  #  container_name: elastic
+  #  image: elasticsearch:7.17.5
+  #  environment:
+  #    - xpack.security.enabled=false
+  #    - "discovery.type=single-node"
+  #  networks: [ nexus ]
+  #  ports: [ "9200:9200" ]
+
+  #kibana:
+  #  container_name: kibana
+  #  image: kibana:7.17.5
+  #  environment:
+  #    - ELASTICSEARCH_HOSTS=http://elastic:9200
+  #  networks: [ nexus ]
+  #  depends_on: [ elasticsearch ]
+  #  ports: [ "5601:5601" ]
+
+networks:
+  nexus:

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>{% include 'layout/head.html' %}</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        {% block sidebar %}
+        {% endblock sidebar %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            {% block topbar %}
+            {% endblock topbar %}
+
+            <!-- Main Content -->
+            <div id="content" class="px-5 py-3">
+
+                {% block content %}
+                {% endblock content %}
+
+            </div>
+            <!-- End of Main Content -->
+
+            {% include 'layout/paginator.html' %}
+
+            {% include 'layout/footer.html' %}
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    {% include 'layout/javascript.html' %}
+
+</body>
+
+</html>

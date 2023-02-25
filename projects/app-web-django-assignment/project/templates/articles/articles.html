@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+
+{% block title %}
+{% if view.kwargs.category %}
+{{ view.kwargs.category | capfirst }} articles
+{% else %}
+Articles
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+{% include 'articles/header.html' %}
+{% include 'articles/articles_table.html' %}
+{% endblock content %}

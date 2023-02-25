@@ -1,0 +1,23 @@
+{% extends 'default.html' %}
+{% load product_filters %}
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+<h1>Products</h1>
+<h3>{{ time_now|date:'M d Y' }}</h3>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            {{ filter.form }}
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+</form>
+{% include 'products/products_filter_table.html'%}
+
+{% endblock content %}
