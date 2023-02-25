@@ -38,11 +38,11 @@ jobs:
         run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
 
       - name: Copy CNAME [https://github.com/mkdocs/mkdocs/issues/1257#issuecomment-316455319]
-        run: cp CNAME docs/
+        run: mkdir -p docs && cp CNAME docs/
+        shell: bash
 
       - name: Clone repositories
         working-directory: docs
-        shell: bash
         run: |
           set -Eeuxo pipefail
 
@@ -66,11 +66,6 @@ jobs:
           done
 
           wait
-          ls
-
-          for repo in "${repos[@]}"; do
-            touch "${repo}/mkdocs.yml"
-          done
 
       - name: Deploy to GHPages
         run: mkdocs gh-deploy --force
