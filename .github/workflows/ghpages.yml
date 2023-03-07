@@ -13,8 +13,8 @@ env:
   GH_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
 jobs:
-  mkdocs:
-    name: Deploy
+  deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
@@ -26,46 +26,20 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Cache
-        uses: actions/cache@v3
+      - uses: actions/setup-node@v3
         with:
-          key: ${{ github.ref }}
-          path: |
-            .cache
-            docs/projects
+          node-version: 18
+          cache: npm
 
-      - name: Install packages
-        run: pip install mkdocs-material mkdocs-monorepo-plugin mkdocs-minify-plugin
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Copy CNAME [https://github.com/mkdocs/mkdocs/issues/1257#issuecomment-316455319]
-        run: mkdir -p docs && cp CNAME docs/
-        shell: bash
+      - name: Build website
+        run: npm run build
 
-      - name: Clone repositories
-        working-directory: docs
-        run: |
-          set -Eeuxo pipefail
-
-          mkdir -p projects
-          cd projects
-          repos=$(
-            gh repo list shishifubing                         \
-              --source                                        \
-              --visibility public                             \
-              --limit 999                                     \
-              --json name                                     \
-              --template '{{ range . }}{{ .name }} {{ end }}'
-          )
-          read -ra repos <<<"${repos}"
-
-          for repo in "${repos[@]}"; do
-            {
-              git clone "https://github.com/shishifubing/${repo}" \
-                || git --git-dir "${repo}/.git" pull
-            } &
-          done
-
-          wait
-
-      - name: Deploy to GHPages
-        run: mkdocs gh-deploy --force
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@bd8c6b06eba6b3d25d72b7a1767993c0aeee42e7 # v3.9.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Build output to publish to the `gh-pages` branch:
+          publish_dir: ./build
