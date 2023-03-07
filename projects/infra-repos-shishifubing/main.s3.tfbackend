@@ -1,6 +1,0 @@
-endpoint                    = "storage.yandexcloud.net"
-bucket                      = "shishifubing-com-terraform"
-region                      = "ru-central1-a"
-key                         = "infra-repos-shishifubing-com.tfstate"
-skip_region_validation      = true
-skip_credentials_validation = true

@@ -1,7 +1,0 @@
-setup_server_user: true
-setup_harden_os: true
-setup_ssh: true
-setup_dotfiles: true
-
-# ssh hardening variables
-ssh_allow_users: "{{ server_user }}"
