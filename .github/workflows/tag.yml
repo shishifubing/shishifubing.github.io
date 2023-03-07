@@ -6,7 +6,6 @@ on:
       - "main"
     paths-ignore:
       - README.md
-      - docs/**
       - .github/**/*.md
       - .github/FUNDING.yml
       - .github/ISSUE_TEMPLATE/**
