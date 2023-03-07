@@ -1,26 +1,41 @@
-<div align="center" markdown="1">
+# Website
 
-# [`shishifubing.github.io`][url-repo]
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-[![License][badge-license]][url-license]
+### Installation
 
-A portfolio website
+```
+$ yarn
+```
 
-</div>
+### Local Development
 
-## TODO
+```
+$ yarn start
+```
 
-- actually put some content here
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-<!-- relative links -->
+### Build
 
-<!-- project links -->
+```
+$ yarn build
+```
 
-[url-repo]: https://github.com/shishifubing/shishifubing.github.io
-[url-license]: https://github.com/shishifubing/shishifubing.github.io/blob/main/LICENSE
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-<!-- external links -->
+### Deployment
 
-<!-- shield links -->
+Using SSH:
 
-[badge-license]: https://img.shields.io/github/license/shishifubing/shishifubing.github.io.svg?style=for-the-badge
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
