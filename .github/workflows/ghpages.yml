@@ -12,6 +12,10 @@ permissions:
 env:
   GH_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+
 jobs:
   deploy:
     name: Deploy to GitHub Pages
